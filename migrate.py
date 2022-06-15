@@ -86,6 +86,8 @@ for t in tables:
         print(c)
     print("---------------------------------------------")
 
+# function starts
+
 #Function migrate_table 
 def migrate_table(db, table_name, table_schema):
     cursor = db.cursor(cursor_factory=psycopg2.extras.DictCursor)
