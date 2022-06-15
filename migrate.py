@@ -1,8 +1,10 @@
 import psycopg2
 import pymongo
-
+import ssl
 from bson.json_util import dumps, loads
 import datetime
+
+
 
 class bcolors:
     HEADER = '\033[95m'
@@ -31,7 +33,8 @@ print(f"{bcolors.HEADER}Connection to MongoDB Server succeeded.{bcolors.ENDC}")
 
 
 cursor = pgsqldb.cursor()
-cursor.execute('''SELECT * FROM "Sports_Training"."Admin";''')
+cursor.execute("select t.table_name,array_agg(c.column_name::text) as columns from information_schema.tables t inner join information_schema.columns c on t.table_name = c.table_name where t.table_schema = 'Sports_Training' and t.table_type= 'BASE TABLE'  and c.table_schema = 'Sports_Training' group by t.table_name; ")
+# cursor.execute('''SELECT * FROM "Sports_Training"."Admin";''')
 myresult = (cursor.fetchall())
 print(myresult)
 
@@ -41,16 +44,27 @@ mongodb_host = "mongodb+srv://njshah301:*NILAy4564*@cluster0.lyugc.mongodb.net/t
 mongodb_dbname = "mymongodb"
 
 
-myclient = pymongo.MongoClient(mongodb_host)
-mydb = myclient[mongodb_dbname]
+myclient = pymongo.MongoClient(mongodb_host,tls=True, tlsAllowInvalidCertificates=True)
+
 
 
 print(f"{bcolors.HEADER}Connection to MongoDB Server succeeded.{bcolors.ENDC}")
 
 print(f"{bcolors.HEADER}Database connections initialized successfully.{bcolors.ENDC}")  
+mydb=myclient["lab08"]
+mycol=mydb["movies"]
+
+query={"directors": {"$in": [ "King Vidor"]}}
+
+x=mycol.find(query,{"title": 1, "_id":0})
+print('Title of movies in which one of director is “King Vidor”')
+for temp in x:
+    print(temp)
 #Start migration
+
 # print(f"{bcolors.HEADER}Migration started...{bcolors.ENDC}")
-# dblist = myclient.list_database_names()
+
+
 # if mongodb_dbname in dblist:
 #     print(f"{bcolors.OKBLUE}The database exists.{bcolors.ENDC}")
 # else:
