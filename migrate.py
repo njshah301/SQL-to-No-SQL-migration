@@ -106,6 +106,4 @@ for temp in x:
 #         success_count += 1
 #     except Exception as e:
 
-#         print(f"{bcolors.FAIL} {e} {bcolors.ENDC}")
-#         fail_count += 1
-        
+
