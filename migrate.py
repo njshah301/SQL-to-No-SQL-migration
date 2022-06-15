@@ -109,12 +109,3 @@ for temp in x:
 #         print(f"{bcolors.FAIL} {e} {bcolors.ENDC}")
 #         fail_count += 1
         
-# print("")
-# print("Migration completed.")
-# print(f"{bcolors.OKGREEN}{success_count} of {total_count} tables migrated successfully.{bcolors.ENDC}")
-# if fail_count > 0:
-#     print(f"{bcolors.FAIL}Migration of {fail_count} tables failed. See errors above.{bcolors.ENDC}")
-
-# end_time = datetime.datetime.now()
-# print(f"{bcolors.HEADER}Script completed at: {end_time} {bcolors.ENDC}")
-# print(f"{bcolors.HEADER}Total execution time: {end_time-begin_time} {bcolors.ENDC}")
