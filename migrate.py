@@ -4,7 +4,10 @@ import ssl
 from bson.json_util import dumps, loads
 import datetime
 
-
+def fetch_table(myresult):
+    ans=[]
+    ans=[i[0] for i in myresult]
+    return ans
 
 class bcolors:
     HEADER = '\033[95m'
@@ -22,7 +25,7 @@ begin_time = datetime.datetime.now()
 print(f"{bcolors.HEADER}Script started at: {begin_time} {bcolors.ENDC}")
 print(f"{bcolors.HEADER}Initializing database connections...{bcolors.ENDC}")
 
-#MySQL connection
+#Postgres connection
 print(f"{bcolors.HEADER}Connecting to PostgreSQL server...{bcolors.ENDC}")
 
 pgsqldb = psycopg2.connect(
@@ -34,10 +37,25 @@ print(f"{bcolors.HEADER}Connection to MongoDB Server succeeded.{bcolors.ENDC}")
 
 cursor = pgsqldb.cursor()
 cursor.execute("select t.table_name,array_agg(c.column_name::text) as columns from information_schema.tables t inner join information_schema.columns c on t.table_name = c.table_name where t.table_schema = 'Sports_Training' and t.table_type= 'BASE TABLE'  and c.table_schema = 'Sports_Training' group by t.table_name; ")
-# cursor.execute('''SELECT * FROM "Sports_Training"."Admin";''')
 myresult = (cursor.fetchall())
-print(myresult)
 
+# Get tables
+tables=fetch_table(myresult)
+
+print(tables)
+
+
+#fetch the FK relations for all table
+cursor.execute("""select 
+  (select r.relname from pg_class r where r.oid = c.conrelid) as table, 
+  (select array_agg(attname) from pg_attribute 
+   where attrelid = c.conrelid and ARRAY[attnum] <@ c.conkey) as col, 
+  (select r.relname from pg_class r where r.oid = c.confrelid) as ftable 
+from pg_constraint c 
+where c.confrelid = (select oid from pg_class where relname = 'Trainer');
+""")
+ans=(cursor.fetchall())
+print(ans)
 print(f"{bcolors.HEADER}Connecting to MongoDB server...{bcolors.ENDC}")
 
 mongodb_host = "mongodb+srv://njshah301:*NILAy4564*@cluster0.lyugc.mongodb.net/test"
@@ -55,11 +73,6 @@ mydb=myclient["lab08"]
 mycol=mydb["movies"]
 
 query={"directors": {"$in": [ "King Vidor"]}}
-
-x=mycol.find(query,{"title": 1, "_id":0})
-print('Title of movies in which one of director is “King Vidor”')
-for temp in x:
-    print(temp)
 #Start migration
 
 # print(f"{bcolors.HEADER}Migration started...{bcolors.ENDC}")
@@ -105,5 +118,3 @@ for temp in x:
 #         print(f"{bcolors.OKGREEN}Processing table: {table[0]} completed. {inserted_count} documents inserted.{bcolors.ENDC}")
 #         success_count += 1
 #     except Exception as e:
-
-
