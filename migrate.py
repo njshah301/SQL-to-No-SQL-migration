@@ -4,10 +4,38 @@ import ssl
 from bson.json_util import dumps, loads
 import datetime
 
+def fetch_FK(tableName):
+  
+  cursor=pgsqldb.cursor()
+  cursor.execute("""select 
+  (select r.relname from pg_class r where r.oid = c.conrelid) as table, 
+  (select array_agg(attname) from pg_attribute 
+   where attrelid = c.conrelid and ARRAY[attnum] <@ c.conkey) as col, 
+  (select r.relname from pg_class r where r.oid = c.confrelid) as ftable 
+from pg_constraint c 
+where c.confrelid = (select oid from pg_class where relname = \'{}\');
+""".format(tableName))
+  ans=cursor.fetchall()
+  
+  return ans
+  
 def fetch_table(myresult):
     ans=[]
     ans=[i[0] for i in myresult]
     return ans
+    
+def fetch_relations(tables):
+    ans={}
+    for i in tables:
+      ans[i]=[]
+    for i in tables:
+      t=i
+      extract_info=fetch_FK(t)
+      if(len(extract_info)):
+        ans[t].append([extract_info[0][0],extract_info[0][1]])
+    return ans
+
+
 
 class bcolors:
     HEADER = '\033[95m'
@@ -28,6 +56,13 @@ print(f"{bcolors.HEADER}Initializing database connections...{bcolors.ENDC}")
 #Postgres connection
 print(f"{bcolors.HEADER}Connecting to PostgreSQL server...{bcolors.ENDC}")
 
+
+
+
+print("Enter Connection string to connect PostGres SQL")
+connection_string=input()
+print("Enter Schema Name:")
+schema=input()
 pgsqldb = psycopg2.connect(
    database="Basketball", user='postgres', password='admin', host='127.0.0.1', port= '5432'
 )
@@ -36,26 +71,21 @@ print(f"{bcolors.HEADER}Connection to MongoDB Server succeeded.{bcolors.ENDC}")
 
 
 cursor = pgsqldb.cursor()
-cursor.execute("select t.table_name,array_agg(c.column_name::text) as columns from information_schema.tables t inner join information_schema.columns c on t.table_name = c.table_name where t.table_schema = 'Sports_Training' and t.table_type= 'BASE TABLE'  and c.table_schema = 'Sports_Training' group by t.table_name; ")
+cursor.execute("select t.table_name,array_agg(c.column_name::text) as columns from information_schema.tables t inner join information_schema.columns c on t.table_name = c.table_name where t.table_schema = \'{}\' and t.table_type= 'BASE TABLE'  and c.table_schema = \'{}\' group by t.table_name;".format(schema,schema))
 myresult = (cursor.fetchall())
 
 # Get tables
 tables=fetch_table(myresult)
-
+print("Tables are Listed Below:")
 print(tables)
 
 
 #fetch the FK relations for all table
-cursor.execute("""select 
-  (select r.relname from pg_class r where r.oid = c.conrelid) as table, 
-  (select array_agg(attname) from pg_attribute 
-   where attrelid = c.conrelid and ARRAY[attnum] <@ c.conkey) as col, 
-  (select r.relname from pg_class r where r.oid = c.confrelid) as ftable 
-from pg_constraint c 
-where c.confrelid = (select oid from pg_class where relname = 'Trainer');
-""")
-ans=(cursor.fetchall())
-print(ans)
+relations=fetch_relations(tables)
+print("First is the Primary Table and Second is a Reference Table if any:")
+print(relations)
+
+# print(ans)
 print(f"{bcolors.HEADER}Connecting to MongoDB server...{bcolors.ENDC}")
 
 mongodb_host = "mongodb+srv://njshah301:*NILAy4564*@cluster0.lyugc.mongodb.net/test"
