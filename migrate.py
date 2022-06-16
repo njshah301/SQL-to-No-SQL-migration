@@ -31,8 +31,10 @@ def fetch_relations(tables):
     for i in tables:
       t=i
       extract_info=fetch_FK(t)
+
       if(len(extract_info)):
-        ans[t].append([extract_info[0][0],extract_info[0][1]])
+        for elements in extract_info:
+          ans[t].append([elements[0],elements[1]])
     return ans
 
 
