@@ -1,0 +1,3 @@
+event_details/event_type/manager
+event_booked
+customer/event_booked
