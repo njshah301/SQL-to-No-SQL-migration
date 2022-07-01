@@ -30,7 +30,7 @@ In this project, we have made an application which takes name and access path as
  ![image](https://user-images.githubusercontent.com/58663029/176963225-fd2a0eb0-e188-4e96-aa98-ff02b6c7f1b4.png)
  
  
- #### Note: Access path is a text file, which is gien to the input to prioritized some collections which are frequently queried out. The migration Algorithm takes care about these acess paths.
+ #### Note: Access path is a text file, which is given to the input to prioritized some collections which are frequently queried out. The migration Algorithm takes care about these acess paths.
  
 ### Example of Acesss path for our BasketBall Training Management System:
 
