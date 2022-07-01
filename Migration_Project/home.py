@@ -15,7 +15,7 @@ def home_page():
     pwo.clear() 
     pwo.put_markdown(""" # SQL to No-SQL migration""")
     
-    arr = input_group("Fill Following fields to migrate",[
+    arr = input_group("Fill the following fields to migrate",[
     # input('Connection String', name='connection_string'),
     input('Database Name', name='Dbname'),
     input('Schema Name',name='schema'),
