@@ -7,7 +7,7 @@ In this project, we have made an application which takes name and access path as
 ## Example Database  [BasketBall Training Manangement System] 
 ![image](https://user-images.githubusercontent.com/58663029/176962556-5141254e-7265-4717-b614-725eda6a5b98.png)
 
-We have 17 table in SQL Schema.
+##  We have 17 table in SQL Schema.
 
 ## Schema Diagram
 
@@ -21,7 +21,7 @@ We have 17 table in SQL Schema.
 ![image](https://user-images.githubusercontent.com/58663029/176962890-6f49f266-920c-4c60-aea3-baffdbc999b2.png)
 
 ## Steps:
- - Input Parameters:
+#### Input Parameters:
  
  ![image](https://user-images.githubusercontent.com/58663029/176963225-fd2a0eb0-e188-4e96-aa98-ff02b6c7f1b4.png)
  
@@ -31,7 +31,7 @@ We have 17 table in SQL Schema.
 
 ![image](https://user-images.githubusercontent.com/58663029/176963591-0eb75e2a-2b98-4fda-84cc-0525906e03c7.png)
 
-- Processing of the Algorithm
+#### Processing of the Algorithm
 ![image](https://user-images.githubusercontent.com/58663029/176963662-388f91c6-1191-4bc8-bbb1-bfb83cc7b63d.png)
 
 #### Migration Done Sucessfully
@@ -55,6 +55,6 @@ Now, if we see in the MongoDB compass, Database (Sports_Training_Demo) is create
 
 ![image](https://user-images.githubusercontent.com/58663029/176964225-4f98968c-db0f-4113-8838-2604c7c0b599.png)
 
-This project was done as the Summer Research Internship.
+#### This project was done as the Summer Research Internship.
 
 
