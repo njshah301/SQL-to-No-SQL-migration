@@ -19,7 +19,8 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 def connectDB(dbName,mongodb_host):
-    print(f"{bcolors.HEADER}Initializing database connections...{bcolors.ENDC}")
+    
+    (f"{bcolors.HEADER}Initializing database connections...{bcolors.ENDC}")
     
     #Postgres connection
     print(f"{bcolors.HEADER}Connecting to PostgreSQL server...{bcolors.ENDC}")

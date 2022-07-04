@@ -43,6 +43,7 @@ def getOrder(tables, work) :
                 zeroqueue.put(c)
             relax.append([c, t])
 
+
     return relax
 
 
@@ -95,7 +96,7 @@ def dfs2(tables,tNo,adj2,work2,currCollec,vis2,relations,curTable):
 
 # function for main algorithm
 def algo(tables,tNo,relations,paths):
-    print(".....Running Algo.....")
+    
 
     nTables=len(tables)
     currCollec = {"dummy"}
