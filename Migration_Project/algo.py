@@ -42,8 +42,7 @@ def getOrder(tables, work) :
             if(indeg[t] == 0) :
                 zeroqueue.put(c)
             relax.append([c, t])
-    for pair in relax :
-        print("embed " + tables[pair[1]] + " in " + tables[pair[0]])
+
     return relax
 
 
