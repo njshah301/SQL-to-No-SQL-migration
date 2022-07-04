@@ -1,3 +1,4 @@
-event_details/event_type/manager
-event_booked
-customer/event_booked
+customer/orders
+orders/lineitem
+part/supplier
+supplier/part
