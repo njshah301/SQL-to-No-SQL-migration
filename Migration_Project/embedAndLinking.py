@@ -83,8 +83,8 @@ def embed2(t1, t2, pk1,pk2, data, t1Name, t2Name, relations):
                 refersvia.append(key)
             break
 
-    print(refersvia)
-    print(pk2)
+    # print(refersvia)
+    # print(pk2)
     if(len(refersvia) == 0) :
         return embed1(t1, t2, pk1,pk2, data, t1Name, t2Name, relations)
 
@@ -95,14 +95,7 @@ def embed2(t1, t2, pk1,pk2, data, t1Name, t2Name, relations):
     z= 0
     for t in t2 :
         z = z + 1
-        if(z==500):
-            print(z)
-        # if(z > 8000) :
-        #     print("wrong")
-        #     break
-        # else :
-        #     print(str(z))
-        # print("here")
+        
         for tt in t1 :
             flag = True
             for i in range( min(len(refersvia), len(pk2) )) :
