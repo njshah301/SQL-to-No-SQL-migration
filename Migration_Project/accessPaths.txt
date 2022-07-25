@@ -1,4 +1,3 @@
-customer/orders
-orders/lineitem
-part/supplier
-supplier/part
+AA/BB/CC
+AA/DD
+BB/AA

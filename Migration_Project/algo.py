@@ -10,6 +10,7 @@ from queue import Queue
 
 
 # function to get order of embedding
+
 def getOrder(tables, work) :
     n = len(work)
     adj = []
@@ -54,7 +55,7 @@ def dfs1(tables,tNo,adj1,work1,currCollec,vis1,curTable):
     for nxtTable in adj1[curTable]:
         if(nxtTable not in vis1):
             dfs1(tables,tNo,adj1,work1,currCollec,vis1,nxtTable)
-        if(nxtTable in currCollec):
+        if(nxtTable in currCollec):                          # if the table is in currCollection
             work1[tNo[curTable]][tNo[nxtTable]]="l"
         else:
             work1[tNo[curTable]][tNo[nxtTable]]="e"
@@ -153,7 +154,7 @@ def algo(tables,tNo,relations,paths):
     for i in range(nTables):
         for j in range(nTables):
             if(work1[i][j]=='-'):
-                work[i][j]=work2[i][j]
+                work[i][j]=work2[i][j]      
             else:
                 work[i][j]=work1[i][j]
                 

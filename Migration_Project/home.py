@@ -27,7 +27,6 @@ def home_page():
     open(userfile['filename'],'wb').write(userfile['content'])
     df=pd.read_csv(userfile['filename'])
     paths=df.to_string(index=False)
-
     pwo.clear()
     pwo.put_markdown(""" # SQL to No-SQL migration""")
     pwo.put_html('<h3>⏳⏳⏳Migrating data please wait...⏳⏳⏳</h3>')

@@ -62,7 +62,9 @@ def main(dbName, schema, mongodb_host, mongodb_dbname, file_paths):
         [myClient,cursor] = connectDB(dbName,mongodb_host)
 
         # # Get Access Paths
+        print(file_paths)
         paths = getAccessPaths(file_paths)
+        print(paths)
         # print(paths)
 
         # # SCHEMA EXTRACTION   
