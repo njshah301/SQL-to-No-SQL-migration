@@ -106,6 +106,7 @@ def embed2(t1, t2, pk1,pk2, data, t1Name, t2Name, relations):
             # f = False
             if(flag == True) :
                 tt[t2Name].append(t) 
+                
     # for t in t1 :
     #     order_id = [] 
     #     for pk in pk2 :

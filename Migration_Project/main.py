@@ -93,7 +93,7 @@ def main(dbName, schema, mongodb_host, mongodb_dbname, file_paths):
 
         # print(currCollec)
         # print()
-        # print(relax)
+        print(relax)
         # print()
         # print(work)
         # print()
