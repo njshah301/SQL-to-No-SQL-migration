@@ -3,6 +3,7 @@ from pywebio.input import *
 from home import *
 import pywebio.input as pwi
 import pandas as pd
+import pywebio.platform
 import subprocess as sp
 import os
 from main import *
@@ -50,5 +51,7 @@ def home_page():
     while(True):
         pass
     
-if __name__ == '__main__':
-    home_page()
+# if __name__ == '__main__':
+#     home_page()
+
+pywebio.platform.tornado.start_server(home_page, port=8080, host='', debug=True, cdn=True, static_dir=None, remote_access=True, reconnect_timeout=5, allowed_origins=None, check_origin=None, auto_open_webbrowser=False, max_payload_size='200M', )
