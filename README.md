@@ -9,10 +9,14 @@ Run in this directory to build and run the app:
 
 ```shell
 docker pull njshah301/migration_from_sql_to_nosql
-docker build -t njshah301/migration_from_sql_to_nosql:0.0.1 .
-docker container run -d -p  27010:27010 njshah301/migration_from_sql_to_nosql:0.0.1
-
 ```
+```shell
+docker build -t njshah301/migration_from_sql_to_nosql:0.0.1 .
+```
+```shell
+docker container run -d -p  27010:27010 njshah301/migration_from_sql_to_nosql:0.0.1
+```
+
 
 The `Migration` app will be running at [http://localhost:27010](http://localhost:27010).
 
