@@ -1,7 +1,18 @@
 
 # Core Idea:
 In this project, we have made an application which takes name and access path as input and can get mongoDB collections as an atlas in mongoDB compass. The algorithm can extract all the needed schema information such as fetch tables, primary key, referred table,reference table etc for given schema. After schema extraction, algorithm will embed or the bases of set of rules. After migration completed, collections are populated in mongoDB compass.
- 
+
+ ## Getting Started
+Download [Docker Desktop](https://www.docker.com/products/docker-desktop) for Mac or Windows. [Docker Compose](https://docs.docker.com/compose) will be automatically installed. On Linux, make sure you have the latest version of [Compose](https://docs.docker.com/compose/install/).
+
+Run in this directory to build and run the app:
+
+```shell
+docker compose up
+```
+
+The `Migration` app will be running at [http://localhost:27010](http://localhost:27010).
+
  
 ## How it Works ?
 
