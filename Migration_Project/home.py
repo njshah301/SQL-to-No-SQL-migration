@@ -1,5 +1,6 @@
 import pywebio.output as pwo
 from pywebio.input import *
+from pywebio import start_server
 from home import *
 import pywebio.input as pwi
 import pandas as pd
@@ -37,7 +38,7 @@ def home_page():
     if(isSuccessful==-1):
           pwo.clear()
           pwo.popup('Error','There is an error.')
-          img=open("something-went-wrong_f.gif",'rb').read()
+          img=open("Migration_Project/something-went-wrong_f.gif",'rb').read()
           pwo.put_image(img)
           pwo.put_button('Migrate Another',onclick=home_page)
 
@@ -45,13 +46,13 @@ def home_page():
         pwo.clear()
         
         pwo.popup('Successful migration','👍🥳🔥Migration done successfully.🔥🥳👍')
-        img=open("inset_successful_f.gif",'rb').read()
+        img=open("Migration_Project/inset_successful_f.gif",'rb').read()
         pwo.put_image(img)
         pwo.put_button('Migrate Another',onclick=home_page)
     while(True):
         pass
     
-# if __name__ == '__main__':
-#     home_page()
+if __name__ == '__main__':
+    start_server(home_page, port=27010,open_webbrowser=True)
 
-pywebio.platform.tornado.start_server(home_page, port=8080, host='', debug=True, cdn=True, static_dir=None, remote_access=True, reconnect_timeout=5, allowed_origins=None, check_origin=None, auto_open_webbrowser=False, max_payload_size='200M', )
+
