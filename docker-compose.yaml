@@ -1,0 +1,8 @@
+version: '0.0.1'
+
+services:
+  migration_from_sql_to_nosql:
+    image: njshah301/migration_from_sql_to_nosql:0.0.1
+    restart: always
+    ports:
+      - "27010:27010"
