@@ -1,4 +1,7 @@
 pywebio
 pandas
-pymongo
+pymongo==3.11.4
 psycopg2-binary
+datetime
+certifi
+dnspython

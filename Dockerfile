@@ -3,6 +3,7 @@ FROM python:3.9-slim
 
 # Set the working directory inside the container
 WORKDIR /app
+RUN apt-get update && apt-get install -y libssl-dev
 
 # Copy the requirements file and install dependencies
 COPY requirement.txt .
