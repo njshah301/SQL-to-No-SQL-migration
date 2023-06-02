@@ -24,7 +24,7 @@ def connectDB(dbName,mongodb_host):
     
     #Postgres connection
     print(f"{bcolors.HEADER}Connecting to PostgreSQL server...{bcolors.ENDC}")
-    pgsqldb = psycopg2.connect(database=dbName,user="postgres",password="admin")
+    pgsqldb = psycopg2.connect(database=dbName,user="postgres",password="admin",host = "host.docker.internal")
     cursor = pgsqldb.cursor()
     print(f"{bcolors.HEADER}Connection to Postgres db succeeded.{bcolors.ENDC}")
 
