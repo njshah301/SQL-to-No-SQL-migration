@@ -10,7 +10,25 @@ Run in this directory to build and run the app:
 ```shell
 docker-compose up
 ```
+or if you want to run an image directly you can follow below commands:
 
+#### To pull image:
+```shell
+docker pull njshah301/migration_from_sql_to_nosql:0.0.2
+```
+
+#### To build image: 
+```shell
+docker build -t njshah301/migration_from_sql_to_nosql:0.0.1 .
+```
+
+#### To run image:
+
+```shell
+
+docker container run -d -p  27010:27010 njshah301/migration_from_sql_to_nosql:0.0.1
+
+```
 
 
 The `Migration` app will be running at [http://localhost:27010](http://localhost:27010).
@@ -18,7 +36,6 @@ The `Migration` app will be running at [http://localhost:27010](http://localhost
 ## Requirements: 
 #### 1>  PostGreSQL 
 #### 2> MongoDB Compass
-
  
 ## How it Works ?
 
