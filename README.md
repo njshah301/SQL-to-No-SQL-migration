@@ -14,7 +14,7 @@ or if you want to run an image directly you can follow below commands:
 
 #### To pull image:
 ```shell
-docker pull njshah301/migration_from_sql_to_nosql:0.0.2
+docker pull njshah301/migration_from_sql_to_nosql:0.0.1
 ```
 
 #### To build image: 
