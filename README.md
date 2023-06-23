@@ -61,7 +61,7 @@ The `Migration` app will be running at [http://localhost:27010](http://localhost
 
 ### Input Parameters:
  
- ![image](https://user-images.githubusercontent.com/58663029/176963225-fd2a0eb0-e188-4e96-aa98-ff02b6c7f1b4.png)
+![image](https://github.com/njshah301/SQL-to-No-SQL-migration/assets/58663029/56f5dc54-8056-4e8c-9ab7-6e577be428b3)
  
  
  #### Note: Access path is a text file, which is given to the input to prioritized some collections which are frequently queried out. The migration Algorithm takes care about these acess paths.
