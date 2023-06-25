@@ -36,7 +36,7 @@ In this project, we have made an application which takes name and access path as
 
 ### HomePage of the Application:
 
-![image](https://user-images.githubusercontent.com/58663029/176962810-8b156f9f-a781-4ca4-8c93-303b9019dffe.png)
+![image](https://github.com/njshah301/SQL-to-No-SQL-migration/assets/58663029/5fa75648-3f62-4063-afac-329ae5a8169c)
 
 
 ## MongoDB Compass View:
@@ -45,11 +45,12 @@ In this project, we have made an application which takes name and access path as
 
 ### Input Parameters:
  
-![image](https://github.com/njshah301/SQL-to-No-SQL-migration/assets/58663029/56f5dc54-8056-4e8c-9ab7-6e577be428b3)
+![image](https://github.com/njshah301/SQL-to-No-SQL-migration/assets/58663029/33f43d05-97cc-4461-9a4e-c11067298bda)
  
  
  #### Note: Access path is a text file, which is given to the input to prioritized some collections which are frequently queried out. The migration Algorithm takes care about these acess paths.
- 
+ #### connection String Format: postgres://username:password@hostname:port/database
+
 ### Example of Acesss path for our BasketBall Training Management System:
 
 ![image](https://user-images.githubusercontent.com/58663029/176963591-0eb75e2a-2b98-4fda-84cc-0525906e03c7.png)
