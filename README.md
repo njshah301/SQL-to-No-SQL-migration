@@ -1,4 +1,3 @@
-
 # Core Idea:
 In this project, we have made an application which takes name and access path as input and can get mongoDB collections as an atlas in mongoDB compass. The algorithm can extract all the needed schema information such as fetch tables, primary key, referred table,reference table etc for given schema. After schema extraction, algorithm will embed or the bases of set of rules. After migration completed, collections are populated in mongoDB compass.
  
@@ -18,7 +17,7 @@ In this project, we have made an application which takes name and access path as
 
 ### HomePage of the Application:
 
-![image](https://user-images.githubusercontent.com/58663029/176962810-8b156f9f-a781-4ca4-8c93-303b9019dffe.png)
+![image](https://github.com/njshah301/SQL-to-No-SQL-migration/assets/58663029/5fa75648-3f62-4063-afac-329ae5a8169c)
 
 
 ## MongoDB Compass View:
@@ -27,10 +26,12 @@ In this project, we have made an application which takes name and access path as
 
 ### Input Parameters:
  
- ![image](https://user-images.githubusercontent.com/58663029/176963225-fd2a0eb0-e188-4e96-aa98-ff02b6c7f1b4.png)
+![image](https://github.com/njshah301/SQL-to-No-SQL-migration/assets/58663029/33f43d05-97cc-4461-9a4e-c11067298bda)
  
  
  #### Note: Access path is a text file, which is given to the input to prioritized some collections which are frequently queried out. The migration Algorithm takes care about these acess paths.
+ #### connection String Format: postgres://username:password@hostname:port/database
+
  
 ### Example of Acesss path for our BasketBall Training Management System:
 
