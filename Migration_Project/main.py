@@ -49,7 +49,7 @@ def pre_process(cursor,result,table_schema,table_name):
 
 
 # main function
-def main(dbName, schema, mongodb_host, mongodb_dbname, file_paths):
+def main(dbName, schema, mongodb_host, mongodb_dbname, file_paths,remote_username,remote_password,remote_host_name,remote_port):
     try:
         begin_time = datetime.datetime.now()
         print(f"{bcolors.HEADER}Script started at: {begin_time} {bcolors.ENDC}")
@@ -59,7 +59,7 @@ def main(dbName, schema, mongodb_host, mongodb_dbname, file_paths):
         # schema="main_db"
         # mongodb_host = "mongodb+srv://akshp:MongoDB005@cluster0.juxn7.mongodb.net/test"
         # mongodb_dbname = "pg2mongo"
-        [myClient,cursor] = connectDB(dbName,mongodb_host)
+        [myClient,cursor] = connectDB(dbName,mongodb_host,remote_username,remote_password,remote_host_name,remote_port)
 
         # # Get Access Paths
         print(file_paths)

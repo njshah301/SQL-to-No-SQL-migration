@@ -18,13 +18,13 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-def connectDB(dbName,mongodb_host):
+def connectDB(dbName,mongodb_host,remote_username,remote_password,remote_host_name,remote_port):
     
     (f"{bcolors.HEADER}Initializing database connections...{bcolors.ENDC}")
     
     #Postgres connection
     print(f"{bcolors.HEADER}Connecting to PostgreSQL server...{bcolors.ENDC}")
-    pgsqldb = psycopg2.connect(database=dbName,user="postgres",password="admin",host = "host.docker.internal")
+    pgsqldb = psycopg2.connect(database=dbName,user=remote_username,password=remote_password,host = remote_host_name,port=remote_port)
     cursor = pgsqldb.cursor()
     print(f"{bcolors.HEADER}Connection to Postgres db succeeded.{bcolors.ENDC}")
 

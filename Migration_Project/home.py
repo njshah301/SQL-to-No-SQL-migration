@@ -1,5 +1,6 @@
 import pywebio.output as pwo
 from pywebio.input import *
+from urllib.parse import urlparse
 from pywebio import start_server
 from pywebio.output import put_buttons, put_markdown
 from home import *
@@ -101,8 +102,7 @@ def home_page():
 
     pwo.put_button("Help",show_help,color='success', outline=True)
     arr = input_group("Fill the following fields to migrate",[
-    # input('Connection String', name='connection_string'),
-    input('Database Name', name='Dbname'),
+    input('Connection String', name='connection_string'),
     input('Schema Name',name='schema'),
     input('MongoDB Host', name='mongoHost'),
     input('MongoDB Name', name='mongo_name'),
@@ -115,9 +115,13 @@ def home_page():
     pwo.clear()
     pwo.put_markdown(""" # SQL to No-SQL migration""")
     pwo.put_html('<h3>⏳⏳⏳Migrating data please wait...⏳⏳⏳</h3>')
-    
-
-    isSuccessful=main(arr['Dbname'],arr['schema'],arr['mongoHost'],arr['mongo_name'],paths)
+    result = urlparse(arr['connection_string'])
+    remote_username=result.username
+    remote_password=result.password
+    remote_port=result.port
+    remote_host_name=result.hostname
+    Dbname = result.path[1:]
+    isSuccessful=main(Dbname,arr['schema'],arr['mongoHost'],arr['mongo_name'],paths,remote_username,remote_password,remote_host_name,remote_port)
     if(isSuccessful==-1):
           pwo.clear()
           pwo.popup('Error','There is an error.')
